@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bg5v8dv75e7s5"]
+[gd_scene load_steps=12 format=3 uid="uid://bg5v8dv75e7s5"]
 
 [ext_resource type="Script" uid="uid://cj3fy1jg3jx1v" path="res://playerCharacter.gd" id="1_g2vtq"]
 [ext_resource type="Texture2D" uid="uid://bvre6qa2oo0us" path="res://sprites/otto1.png" id="2_2fvbb"]
@@ -41,27 +41,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_dw050"]
-script/source = "extends Control
-
-
-func _ready() -> void:
-	if OS.get_name() == \"Android\" or OS.get_name() == \"iOS\":
-		visible = true
-		$Controls2.position.x =   get_viewport().size.x - 530
-		
-	else:
-		visible = false		
-"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b26j0"]
-
-[sub_resource type="BitMap" id="BitMap_n7ghd"]
-data = {
-"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAGAAAAAAAAAAAAAAAA8AAAAAAAAAAAAA8AAAAAAAAAAAAAAADwAAAAAAAAAAAAD4AQAAAAAAAAAAAIAfAAAAAAAAAAAAAPwDAAAAAAAAAAAAwD8AAAAAAAAAAAAA/gcAAAAAAAAAAADgfwAAAAAAAAAAAAD+BwAAAAAAAAAAAPD/AAAAAAAAAAAAAP8PAAAAAAAAAAAA+P8BAAAAAAAAAACA/x8AAAAAAAAAAAD8/wMAAAAAAAAAAMD/PwAAAAAAAAAAAP7/BwAAAAAAAAAA4P9/AAAAAAAAAAAA/v8HAAAAAAAAAADw//8AAAAAAAAAAAD//w8AAAAAAAAAAPj//wEAAAAAAAAAgP//HwAAAAAAAAAA/P//AwAAAAAAAADA//8/AAAAAAAAAAD8//8DAAAAAAAAAOD//38AAAAAAAAAAP7//wcAAAAAAAAA8P///wAAAAAAAAAA////DwAAAAAAAAD4////AQAAAAAAAID///8fAAAAAAAAAPz///8DAAAAAAAAwP///z8AAAAAAAAA/P///wMAAAAAAADg////fwAAAAAAAAD+////BwAAAAAAAPD/////AAAAAAAAAP////8PAAAAAAAA+P////8BAAAAAACA/////x8AAAAAAAD8/////wEAAAAAAMD/////PwAAAAAAAPz/////AwAAAAAA4P////9/AAAAAAAA/v////8HAAAAAADw//////8AAAAAAAD//////w8AAAAAAPj//////wEAAAAAgP//////HwAAAAAA+P//////AQAAAADA//////8/AAAAAAD8//////8DAAAAAOD//////38AAAAAAP7//////wcAAAAA8P///////wAAAAAA////////DwAAAAD4////////AQAAAID///////8fAAAAAPj///////8BAAAAwP///////z8AAAAA/P///////wMAAADg////////fwAAAAD+////////BwAAAPD/////////AAAAAP////////8PAAAA8P////////8AAACA/////////x8AAAD4/////////wEAAMD/////////PwAAAPz/////////AwAA4P////////9/AAAA/v////////8HAADw//////////8AAAD//////////w8AAPD//////////wAAgP//////////HwAA+P//////////AQDA//////////8/AAD8//////////8DAOD//////////38AAP7//////////wcA4P//////////fwAA////////////DwDw////////////AID///////////8fAPj///////////8BwP///////////z8A/P///////////wPg////////////fwD+////////////B+D///////////9/AP////////////8P8P////////////+A/////////////x/4/////////////8H/////////////P/z/////////////w/////////////8//v/////////////n/////////////3///////////////w8="),
-"size": Vector2i(92, 105)
-}
-
 [node name="Player" type="Node2D"]
 z_index = 1
 
@@ -100,62 +79,3 @@ sprite_frames = SubResource("SpriteFrames_b26j0")
 animation = &"explosion"
 frame = 1
 frame_progress = 1.0
-
-[node name="Touchbuttons" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-script = SubResource("GDScript_dw050")
-
-[node name="Controls1" type="Control" parent="Touchbuttons"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1417.0
-offset_top = 647.0
-offset_right = 1417.0
-offset_bottom = 647.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Up" type="TouchScreenButton" parent="Touchbuttons/Controls1"]
-position = Vector2(-1372, -77)
-scale = Vector2(2, 2)
-texture_normal = SubResource("CompressedTexture2D_b26j0")
-bitmask = SubResource("BitMap_n7ghd")
-shape_centered = false
-action = "move_up"
-
-[node name="Down" type="TouchScreenButton" parent="Touchbuttons/Controls1"]
-position = Vector2(-1190, 368)
-rotation = 3.14159
-scale = Vector2(2, 2)
-texture_normal = SubResource("CompressedTexture2D_b26j0")
-bitmask = SubResource("BitMap_n7ghd")
-shape_centered = false
-shape_visible = false
-action = "move_down"
-
-[node name="Controls2" type="Control" parent="Touchbuttons"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1448.0
-offset_top = 822.0
-offset_right = 1890.0
-offset_bottom = 1015.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Right" type="TouchScreenButton" parent="Touchbuttons/Controls2"]
-position = Vector2(437, 0)
-rotation = 1.5708
-scale = Vector2(2, 2)
-texture_normal = SubResource("CompressedTexture2D_b26j0")
-bitmask = SubResource("BitMap_n7ghd")
-shape_centered = false
-action = "move_right"
-
-[node name="Left" type="TouchScreenButton" parent="Touchbuttons/Controls2"]
-position = Vector2(4, 185)
-rotation = -1.5708
-scale = Vector2(2, 2)
-texture_normal = SubResource("CompressedTexture2D_b26j0")
-bitmask = SubResource("BitMap_n7ghd")
-shape_centered = false
-action = "move_left"
