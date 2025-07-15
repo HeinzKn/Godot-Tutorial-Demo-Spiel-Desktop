@@ -1,14 +1,11 @@
 extends CharacterBody2D
 
-
-var vp_width
-var vp_height
-var speed = 400  # move speed in pixels/sec
+var speed = 600  # move speed in pixels/sec
 var dead = false
-var screen_size 
 
-func _ready():
-	screen_size = get_viewport_rect().size
+
+func _ready():	
+	position = Vector2(100,100)
 
 func explode(lives):	
 	dead = true
@@ -50,11 +47,11 @@ func _process(delta):
 			direction = direction.normalized()		
 			rotation = direction.angle()
 			velocity = direction * speed
-			move_and_collide(velocity*delta)	
+			move_and_collide(velocity * delta)	
 			
 			#verhindern, dass Player das Spielfeld verlässt				
-			position.x = clamp(position.x,0,get_viewport_rect().size.x-50)
-			position.y = clamp(position.y,0,get_viewport_rect().size.y-50)
+			position.x = clamp(position.x,0,get_viewport_rect().size.x)
+			position.y = clamp(position.y,0,get_viewport_rect().size.y)
 			
 			if not $AnimationKrabbeln.is_playing():	
 				$AnimationKrabbeln.play()

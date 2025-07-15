@@ -7,7 +7,7 @@ var vp_height
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:	
-	var viewport_size = get_viewport().size	
+	var viewport_size = get_viewport_rect().size	
 	vp_width = viewport_size.x
 	vp_height = viewport_size.y				
 	position = random_position()
