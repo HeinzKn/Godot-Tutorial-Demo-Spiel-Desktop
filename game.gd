@@ -23,23 +23,25 @@ var taler_found = 0
 var lb_taler
 var lb_sterne
 var lb_leben
-var audio_taler
-var audio_stern
 
 
 func _ready() -> void:			
 	kugel_inst = preload("res://kugeln.tscn")	
 	stern_inst = preload("res://sterne.tscn")	
 	taler_inst = preload("res://taler.tscn")	
+	$KugelTimer.wait_time = 4 #nur beim ersten mal, danach je nach Stufe
 	$SternTimer.wait_time = 3
 	$TalerTimer.wait_time = 1	
+	$TalerTimer.start()
+	$SternTimer.start()
+	$KugelTimer.start()
+	set_schwierigkeitsgrad()
 	anzeige_taler(taler_found)
 	anzeige_sterne(sterne_found)
 	anzeige_leben(leben)
-	anzeige_stufe(Score.stufe)
-	set_schwierigkeitsgrad()
+	anzeige_stufe(Score.stufe)	
 	$GameOver.visible = false
-		
+				
 
 func set_schwierigkeitsgrad():
 	if Score.stufe == 1:
@@ -50,8 +52,6 @@ func set_schwierigkeitsgrad():
 		$KugelTimer.wait_time = 0.3
 	
 		
-		
-	
 func anzeige_taler(t):
 	$LabelTaler.text = "Taler: " + str(t)
 	
@@ -125,6 +125,8 @@ func _on_stern_timer_timeout() -> void:
 	stern_count += 1
 	if stern_count <= stern_max:		
 		new_stern()
+	else:
+		$SternTimer.stop()		
 	
 
 
@@ -132,3 +134,5 @@ func _on_taler_timer_timeout() -> void:
 	taler_count += 1
 	if taler_count <= taler_max:
 		new_taler()
+	else:
+		$TalerTimer.stop()	
