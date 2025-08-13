@@ -49,14 +49,10 @@ polygon = PackedVector2Array(186.03, -81.0734, -82.5, -52.7, -82.5, -52, -164.02
 [node name="Player" parent="." instance=ExtResource("4_yq8tf")]
 
 [node name="KugelTimer" type="Timer" parent="."]
-wait_time = 3.927
-autostart = true
 
 [node name="SternTimer" type="Timer" parent="."]
-autostart = true
 
 [node name="TalerTimer" type="Timer" parent="."]
-autostart = true
 
 [node name="LabelTaler" type="Label" parent="."]
 z_index = 4
