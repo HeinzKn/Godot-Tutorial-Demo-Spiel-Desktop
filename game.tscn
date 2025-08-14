@@ -98,6 +98,6 @@ volume_db = 17.449
 stream = ExtResource("6_sng2h")
 volume_db = 17.449
 
-[connection signal="timeout" from="KugelTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="KugelTimer" to="." method="_on_kugel_timer_timeout"]
 [connection signal="timeout" from="SternTimer" to="." method="_on_stern_timer_timeout"]
 [connection signal="timeout" from="TalerTimer" to="." method="_on_taler_timer_timeout"]

@@ -6,7 +6,6 @@ var leben = 1
 
 var kugel_inst
 var kugel
-var kugeln_max
 
 var stern_inst
 var stern
@@ -51,7 +50,7 @@ func set_schwierigkeitsgrad():
 	if Score.stufe == 3:
 		$KugelTimer.wait_time = 0.3
 	
-		
+
 func anzeige_taler(t):
 	$LabelTaler.text = "Taler: " + str(t)
 	
@@ -115,11 +114,8 @@ func _on_taler_found():
 	anzeige_taler(taler_found)
 	
 	
-
-func _on_timer_timeout() -> void:
+func _on_kugel_timer_timeout() -> void:
 	new_kugel()
-	
-
 
 func _on_stern_timer_timeout() -> void:
 	stern_count += 1
@@ -127,8 +123,6 @@ func _on_stern_timer_timeout() -> void:
 		new_stern()
 	else:
 		$SternTimer.stop()		
-	
-
 
 func _on_taler_timer_timeout() -> void:
 	taler_count += 1

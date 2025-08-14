@@ -100,12 +100,13 @@ func _physics_process(delta):
 	velocity += direction * delta * speed	
 	var collision = move_and_collide(velocity)
 	
-	# Kugel hat Kollision mit Player
-	if collision:
-		velocity = velocity.bounce(collision.get_normal())		
+	# Kugel hat Kollision 
+	if collision:		
+		# Kollision mit Player	
 		if collision.get_collider().name == "PlayerCharacter":			
 			get_tree().call_group("Alle_Kugeln", "queue_free")
 			emit_signal("have_killed")
-			
+		# prallt ab, also am Baum 
+		velocity = velocity.bounce(collision.get_normal())		
 	
 	
